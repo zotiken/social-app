@@ -2,6 +2,7 @@
   font-family: sans-serif;
   display: grid;
   grid-template-columns: 2fr 2fr  4fr 4fr;
+  background-image: url(https://thumbs.dreamstime.com/b/trance-%D0%B4%D0%B8%D1%81%D0%BA%D0%BE-%D1%82%D0%B0%D0%BD%D1%86%D0%BE%D1%80%D0%B0-01-%D0%BA%D0%BB%D1%83%D0%B1%D0%B0-8509553.jpg);
   /* grid-auto-rows: 100px; */
   grid-template-areas:
   "header header header header"
@@ -9,79 +10,9 @@
     "footer footer footer footer"
   ; 
 }
-
-.header {
-  color: azure;
-  grid-area: header;
-  display: flex;
-  background-color: rgb(166, 166, 251);
-
-}
-.nav {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-
-}
-.logo_container {
-padding:10px 20px;
-}
-.nav ul {
-  padding: 0;
-  text-transform: uppercase;
-  list-style: none;
-  display: flex;
-  align-items: center;
-}
-.nav ul li {
-  padding: 10px;
-  text-transform: uppercase;
-  list-style: none;
-  display: flex;
-}
-
-
-.aside {
-  color: beige;
-  grid-area: aside;
-  background-color: rgb(104, 104, 207);
-  height: 80vh;
-}
-.aside ul {
-  padding: 0;
-  list-style: none;
-  text-transform: uppercase;
-}
-.aside ul li {
-  margin: 20px;
-  text-transform: uppercase;
-}
-.aside ul li a {
-  color: bisque;
-text-decoration: none;}
-
-
 .main {
-  color: rgb(36, 29, 18);
-  background-color: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   grid-area: main;
-  height: 80vh;
-}
-.main_container {
-  height: 100%;
-  width: 100%;
-  background-color: aliceblue;
-}
-.main_container .main_background {
-}
-/* .main img{
-  width: 100%;
-} */
-.main .avatar{
-  width: 100px;
+
 }
 .user_info {
   color:#ffffff;
@@ -92,23 +23,47 @@ text-decoration: none;}
 }
 .user_info  div{
   padding: 20px;
+}
+.user_data{
+  background:linear-gradient(90deg,rgba(29, 25, 68, 0.9),rgba(243, 238, 238, 0.1));
 
 }
-
+.avatar {
+  width: 135px;
+  height: 192px;
+}
 .Messages_container {
+  box-sizing: border-box;
+  min-height: 72%;
   padding: 20px;
+  /* background-color:rgba(255, 255, 255, 0.9); */
 }
-.Messages_list {
-  padding: 0;
-  list-style: none;
+.Messages_hrsder_container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background:linear-gradient(rgba(255, 255, 255, 0.9),rgba(255, 255, 255, 0.1));
+  padding: 20px;
+
 }
-.Messages_list li {
-padding: 20px;
-margin: 10px;
-  border: 1px solid #000000;
-  border-radius: 10px;
+/* .Messages_container h3 {
 }
+.Messages_container p {
+  background:linear-gradient(rgba(255, 255, 255, 0.9),rgba(255, 255, 255, 0.1));
+
+  background:linear-gradient(rgba(255, 255, 255, 0.9),rgba(255, 255, 255, 0.1));
+  padding: 20px;
+} */
+
+
 
 .footer {
   grid-area: footer;
+}
+.active {
+color: #000000;
+font-weight: bold;
+text-transform: uppercase;
+padding-left: 10px;
+transition: padding .3s ease-in-out;
 }

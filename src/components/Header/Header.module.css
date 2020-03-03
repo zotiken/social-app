@@ -1,0 +1,32 @@
+.header {
+    color: azure;
+    grid-area: header;
+    display: flex;
+    background-color: rgba(166, 166, 251,0.8);
+  
+  }
+  .nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  
+  }
+  .logo_container {
+  padding:10px 20px;
+  }
+  .nav ul {
+    padding: 0;
+    text-transform: uppercase;
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+  .nav ul li {
+    padding: 10px;
+    text-transform: uppercase;
+    list-style: none;
+    display: flex;
+  }
+  .nav ul li:hover {
+      text-shadow: 1px 1px 10px #000;
+  }

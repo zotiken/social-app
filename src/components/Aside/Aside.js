@@ -1,9 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
+import classes from "../Aside/Aside.module.css";
+
 
 export default () => {
   return (
-    <aside className="aside">
+    <aside className={classes.aside}>
       <ul>
         <li>
           <Link to="/home">home</Link>
