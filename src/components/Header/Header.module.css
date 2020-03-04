@@ -2,8 +2,8 @@
     color: azure;
     grid-area: header;
     display: flex;
-    background-color: rgba(166, 166, 251,0.8);
-  
+    /* background-color: rgba(166, 166, 251,0.8); */
+    background-color:#98b4b8;
   }
   .nav {
     width: 100%;

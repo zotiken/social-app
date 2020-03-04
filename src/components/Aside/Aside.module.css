@@ -1,7 +1,8 @@
 .aside {
   color: beige;
   grid-area: aside;
-  background-color: rgba(104, 104, 207,0.8);
+  /* background-color: rgba(104, 104, 207,0.8); */
+  background-color:#4f838b;
   min-height: 80vh;
 
 }

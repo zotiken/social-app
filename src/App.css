@@ -2,7 +2,8 @@
   font-family: sans-serif;
   display: grid;
   grid-template-columns: 2fr 2fr  4fr 4fr;
-  background-image: url(https://thumbs.dreamstime.com/b/trance-%D0%B4%D0%B8%D1%81%D0%BA%D0%BE-%D1%82%D0%B0%D0%BD%D1%86%D0%BE%D1%80%D0%B0-01-%D0%BA%D0%BB%D1%83%D0%B1%D0%B0-8509553.jpg);
+  background-color: #aec4c7;
+  /* background-image: url(https://thumbs.dreamstime.com/b/trance-%D0%B4%D0%B8%D1%81%D0%BA%D0%BE-%D1%82%D0%B0%D0%BD%D1%86%D0%BE%D1%80%D0%B0-01-%D0%BA%D0%BB%D1%83%D0%B1%D0%B0-8509553.jpg); */
   /* grid-auto-rows: 100px; */
   grid-template-areas:
   "header header header header"

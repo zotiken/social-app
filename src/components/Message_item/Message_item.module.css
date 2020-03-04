@@ -1,0 +1,28 @@
+.messages_item {
+  background-color: rgba(250, 250, 250, 1);
+  width: 50%;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  padding: 20px;
+  margin: 10px;
+  /* border: 1px solid #000000; */
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px #a9a9a9;
+}
+.answer {
+  align-self: flex-end;
+  background-color: #acaac3;
+}
+.messages_item__name {
+  position: absolute;
+  top:5%;
+  left: 5%;
+}
+.messages_item__create_date {
+  position: absolute;
+  bottom:5%;
+  right:5%;
+
+}
