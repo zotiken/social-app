@@ -8,19 +8,10 @@ import News from "./components/News/News"
 import Message from "./components/Message/Message"
 import Settings from "./components/Settings/Settings"
 import "./App.css";
-import {posts,dialogs} from './state/state'
+// import {posts,dialogs} from './state/state'
 
-function App() {
-let[selectDialog,setSelectDialog] = useState(0);
-
-var onClick = (event) => {
-    dialogs.forEach((dialog,i) => {if (dialog.id === event.target.getAttribute("data-id")) {
-        setSelectDialog(selectDialog = i)}})
-        let List = (document.querySelectorAll("#dialogs_list li a"))
-        List.forEach(dialog =>dialog.classList.remove("active") )
-        event.target.classList.add("active");
-}
-
+function App(props) {
+// let[selectDialog,setSelectDialog] = useState(0);
 
   return (
     <div className="App">
@@ -29,10 +20,10 @@ var onClick = (event) => {
       <Aside/>
       <Switch>
             <Route path="/home">
-            <Main posts={posts}/>
+            <Main posts={props.state.posts}/>
             </Route>
             <Route path="/message">
-            <Message dialogs={dialogs} onClick={onClick} selectDialog={selectDialog}/>
+            <Message dialogs={props.state.dialogs} onOpenDialog={props.state.onOpenDialog.bind(props.state)} selectDialog={props.state.selectDialog}/>
             </Route>
 
             <Route path="/settings">
