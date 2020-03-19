@@ -6,6 +6,8 @@ export default props => {
       className={`${classes.messages_item} ${
         props.message.messageType === "answer" ? classes.answer : null
       }`}
+      data-name={props.name}
+      data-id={props.id}
     >
       <span className={classes.messages_item__name}>{props.dialogs[props.selectDialog].name}</span>
       <p>{props.message.text}</p>
