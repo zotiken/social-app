@@ -5,8 +5,9 @@ import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import News from "./components/News/News";
-import Message from "./components/Message/Message";
 import Settings from "./components/Settings/Settings";
+import MessageContainer from "./components/Message-container/MessageContainer";
+
 import "./App.css";
 // import {posts,dialogs} from './state/state'
 
@@ -22,7 +23,7 @@ function App(props) {
             <Main posts={props.store.getState().posts} />
           </Route>
           <Route path="/message">
-            <Message
+            <MessageContainer
               state={props.store.getState()}
               // onOpenDialog={props.store.despatch.bind(props.store)}
               // onAddText={props.store.despatch.bind(props.store)}
@@ -30,8 +31,7 @@ function App(props) {
               onOpenDialog={props.store.dispatch}
               onAddText={props.store.dispatch}
               onAddMessage={props.store.dispatch}
-
-            />
+              ></MessageContainer>
           </Route>
 
           <Route path="/settings">

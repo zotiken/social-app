@@ -95,45 +95,48 @@ const initState = () => {
   });
 };
 const dialogReducer = (state = initState(), action) => {
-  debugger;
-  console.log(state);
+  let newState;
   switch (action.type) {
     case OPEN_DIALOG:
-      state.dialogs.forEach((dialog, i) => {
+      newState = {...state}
+      newState.dialogs.forEach((dialog, i) => {
         if (dialog.id === action.param.event.target.getAttribute("data-id")) {
-          state.selectDialog = i;
-          state.selectDialogID = dialog.id;
+          newState.selectDialog = i;
+          newState.selectDialogID = dialog.id;
+          console.log(newState);
         }
       });
       let List = document.querySelectorAll("#dialogs_list li a");
       List.forEach(dialog => dialog.classList.remove("active"));
       action.param.event.target.classList.add("active");
       // store._callSubscriber(store.getState);
-      return state;
+      return newState;
     case ADD_TEXT:
-      state.addMessage = action.param.event.target.value;
+      newState = {...state}
+      newState.addMessage = action.param.event.target.value;
       // store._callSubscriber(store.getState);
-      return state;
+      return newState;
 
     case ADD_MSG:
-      state.dialogs.map(dialog => {
+      newState = {...state}
+      newState.dialogs = [ ...state.dialogs]
+      newState.dialogs.map(dialog => {
         if (dialog.id === state.selectDialogID) {
           let addMessage = {
             messageType: "question",
-            text: state.addMessage
+            text: newState.addMessage
           };
-          state.addMessage = "";
+          newState.addMessage = "";
 
           dialog.messages.push(addMessage);
         }
         // store._callSubscriber(store.getState);
-        return state;
+        return newState;
       });
     default:
       // console.log(action + " not found");
-      //   return state;
-      break;
+        return state;
+      // break;
   }
-  return state;
 };
 export default dialogReducer;
