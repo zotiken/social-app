@@ -24,12 +24,12 @@ function App(props) {
           <Route path="/message">
             <Message
               state={props.store.getState()}
-              // onOpenDialog={props.store.despatch.bind(props.store)}
-              // onAddText={props.store.despatch.bind(props.store)}
-              // onAddMessage={props.store.despatch.bind(props.store)}
-              onOpenDialog={props.store.dispatch}
-              onAddText={props.store.dispatch}
-              onAddMessage={props.store.dispatch}
+              onOpenDialog={props.store.despatch.bind(props.store)}
+              onAddText={props.store.despatch.bind(props.store)}
+              onAddMessage={props.store.despatch.bind(props.store)}
+              // onOpenDialog={props.store.dispatch}
+              // onAddText={props.store.dispatch}
+              // onAddMessage={props.store.dispatch}
 
             />
           </Route>
