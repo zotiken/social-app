@@ -1,10 +1,11 @@
-import React from 'react'
-import classes from "../Message/Message.module.css"
-import MessageItem from '../Message_item/Message_item'
+import React from 'react';
+import classes from "../Message/Message.module.css";
+import MessageItem from '../Message_item/Message_item';
+import {openDiaologActionCreator,addTextActionCreator,addMessageActionCreator} from '../../reduses/dialods-reducer'
+
 
 export default (props) => {
-  console.log(props.state);
-
+  debugger;
     return(
         <main className="main">
         <div className="main_container dialogs">
@@ -13,17 +14,17 @@ export default (props) => {
           <div className={classes.dialogs_wrapper}>
             <div className={classes.dialogs_block}>
             <ul className={classes.dialogs_list} id="dialogs_list" >
-              { props.state.dialogs.map(dialog => <li key={dialog.id} ><a onClick={(event)=> props.onOpenDialog(event,"OPEN_DIALOG")} data-id={dialog.id}>{dialog.name}</a></li> )}
+              { props.state.dialogsPage.dialogs.map(dialog => <li key={dialog.id} ><a onClick={(event)=> props.onOpenDialog(openDiaologActionCreator({event}))} data-id={dialog.id}>{dialog.name}</a></li> )}
                   </ul>
                   <ul className={classes.messages_list}>
                      
-                  {props.state.dialogs[props.state.selectDialog].messages.map((message,i) =>  <MessageItem message={message} dialogs={props.state.dialogs} selectDialog={props.state.selectDialog} key={i}/> )}
+                  {props.state.dialogsPage.dialogs[props.state.dialogsPage.selectDialog].messages.map((message,i) =>  <MessageItem message={message} dialogs={props.state.dialogsPage.dialogs} selectDialog={props.state.dialogsPage.selectDialog} key={i}/> )}
                   </ul>      
             </div>
             <div className={classes.dialogs_add_Post}>
-              <textarea name="add_Posts" id="addPosts" cols="30" rows="10" value={props.state.addMessage} onChange={(event)=> props.onAddText(event,"ADD_TEXT")}></textarea>
+              <textarea name="add_Posts" id="addPosts" cols="30" rows="10" value={props.state.dialogsPage.addMessage} onChange={(event)=> props.onAddText(addTextActionCreator({event}))}></textarea>
               <button onClick={
-                (event)=> props.onAddMessage(event,"ADD_MSG")
+                (event)=> {props.onAddMessage(addMessageActionCreator({event}))} 
               }>View all</button>
 
             </div>
