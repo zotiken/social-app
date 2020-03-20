@@ -1,4 +1,4 @@
-// import store from "../state/state";
+import store from "../state/state";
 const OPEN_DIALOG = "OPEN_DIALOG";
 const ADD_TEXT = "ADD_TEXT";
 const ADD_MSG = "ADD_MSG";
@@ -108,11 +108,11 @@ const dialogReducer = (state = initState(), action) => {
       let List = document.querySelectorAll("#dialogs_list li a");
       List.forEach(dialog => dialog.classList.remove("active"));
       action.param.event.target.classList.add("active");
-      // store._callSubscriber(store.getState);
+      store._callSubscriber(store.getState);
       return state;
     case ADD_TEXT:
       state.addMessage = action.param.event.target.value;
-      // store._callSubscriber(store.getState);
+      store._callSubscriber(store.getState);
       return state;
 
     case ADD_MSG:
@@ -126,7 +126,7 @@ const dialogReducer = (state = initState(), action) => {
 
           dialog.messages.push(addMessage);
         }
-        // store._callSubscriber(store.getState);
+        store._callSubscriber(store.getState);
         return state;
       });
     default:
