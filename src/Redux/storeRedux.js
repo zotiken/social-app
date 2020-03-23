@@ -3,7 +3,10 @@ import  dialogReducer from '../reduses/dialods-reducer'
 import postReducer from '../reduses/post-reducer'
 import SearchUserReducer from '../reduses/search-reducer'
 
-let rootReducer = combineReducers({dialogsPage:dialogReducer,profilePage:postReducer,usersPage:SearchUserReducer})
+let rootReducer = combineReducers({
+    dialogsPage:dialogReducer,
+    profilePage:postReducer,
+    findUsersPage:SearchUserReducer})
 
 
 
