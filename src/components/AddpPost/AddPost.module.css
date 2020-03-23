@@ -1,0 +1,28 @@
+.aside {
+  color: beige;
+  grid-area: aside;
+  /* background-color: rgba(104, 104, 207,0.8); */
+  background-color:#4f838b;
+  min-height: 80vh;
+
+}
+.aside ul {
+  padding: 0;
+  list-style: none;
+  text-transform: uppercase;
+  position: sticky;
+  top: 30px;
+}
+.aside ul li {
+  margin: 20px;
+  text-transform: uppercase;
+}
+.aside ul li a {
+  color: bisque;
+  transition: all .3s ease-in-out;
+text-decoration: none;}
+
+.aside ul li a:hover {
+  transition: padding .3s ease-in-out;
+      padding-left: 10px;
+  }

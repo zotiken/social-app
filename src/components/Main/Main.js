@@ -1,9 +1,8 @@
 import React from 'react'
 import classes from "../Main/Main.module.css";
-import PostsList from "../PostsList/PostsList"
-
-
+import PostBox from "../post-box/post-box"
 export default (props) => {
+  // debugger;
     return(
         <main className={classes.main}>
         <div className={classes.main_container}>
@@ -26,14 +25,7 @@ export default (props) => {
             </div>
             </div>
           </div>
-          <div className="Messages_container">
-             <div className="Messages_hrsder_container">
-             <h3>Posts</h3>
-              <p><span>5</span> of <span>{props.posts.length}</span></p>
-             </div>
-              <PostsList posts={props.posts}/>
-            <button>View all</button>
-          </div>
+          <PostBox/>
         </div>
       </main>
 

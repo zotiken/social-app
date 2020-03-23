@@ -2,13 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import {Provider} from "react-redux"
 import * as serviceWorker from './serviceWorker';
 // import store from './state/state'
 import store from './Redux/storeRedux'
 
 
 // function reRenender () {
-    ReactDOM.render(<App store = {store} />, document.getElementById('root'));
+    ReactDOM.render(
+            <Provider store = {store}>
+            <App store = {store} />
+            </Provider>
+, document.getElementById('root'));
 // }
 // reRenender(store.getState);
 // store.subscriber(reRenender);

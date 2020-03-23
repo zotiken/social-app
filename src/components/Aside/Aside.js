@@ -23,6 +23,8 @@ export default () => {
           <Link to="/news">news</Link>
         </li>
       </ul>
+      <ul><li>
+      <Link to="/search_user">Search User</Link></li></ul>
     </aside>
   );
 };

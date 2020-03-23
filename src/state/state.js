@@ -181,7 +181,7 @@ const store = {
   },
   despatch(action) {
     dialogReducer(this.getState().dialogsPage, action);
-    // postReducer(this.getState().posts, action);
+    postReducer(this.getState().posts, action);
 
     // switch (action.type) {
     //   case "OPEN_DIALOG":

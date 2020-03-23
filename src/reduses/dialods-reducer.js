@@ -14,6 +14,7 @@ const initState = () => {
   return ( {
     selectDialog: 0,
     selectDialogID: 0,
+    ativeLink:0,
     addMessage: "",
     dialogs: [
       {
@@ -103,9 +104,9 @@ const dialogReducer = (state = initState(), action) => {
         if (dialog.id === action.param.event.target.getAttribute("data-id")) {
           newState.selectDialog = i;
           newState.selectDialogID = dialog.id;
-          console.log(newState);
         }
       });
+
       let List = document.querySelectorAll("#dialogs_list li a");
       List.forEach(dialog => dialog.classList.remove("active"));
       action.param.event.target.classList.add("active");
@@ -120,19 +121,22 @@ const dialogReducer = (state = initState(), action) => {
     case ADD_MSG:
       newState = {...state}
       newState.dialogs = [ ...state.dialogs]
-      newState.dialogs.map(dialog => {
-        if (dialog.id === state.selectDialogID) {
-          let addMessage = {
-            messageType: "question",
-            text: newState.addMessage
-          };
-          newState.addMessage = "";
-
-          dialog.messages.push(addMessage);
-        }
-        // store._callSubscriber(store.getState);
-        return newState;
+      newState.dialogs.forEach((dialog,i) => {
+        dialog ={...state.dialogs[i]}
+        dialog.messages = {...state.dialogs[i].messages}
       });
+      newState.dialogs.map((dialog,i) => {
+        if (dialog.id === state.selectDialogID) {
+          let addMessage = [
+           { messageType: "question",
+            text: newState.addMessage}
+          ];
+          newState.addMessage = "";
+          dialog.messages=[...state.dialogs[i].messages,...addMessage]
+        }
+      //   // store._callSubscriber(store.getState);
+      });
+      return newState;
     default:
       // console.log(action + " not found");
         return state;

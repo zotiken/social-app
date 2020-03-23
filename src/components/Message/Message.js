@@ -5,7 +5,7 @@ import {openDiaologActionCreator,addTextActionCreator,addMessageActionCreator} f
 
 
 export default (props) => {
-  debugger;
+  // debugger;
     return(
         <main className="main">
         <div className="main_container dialogs">

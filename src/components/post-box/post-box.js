@@ -1,9 +1,9 @@
 import React from 'react';
 // import classes from "../Message/Message.module.css";
 // import MessageItem from '../Message_item/Message_item';
-import {openDiaologActionCreator,addTextActionCreator,addMessageActionCreator} from '../../reduses/dialods-reducer'
 import {connect} from "react-redux";
-import Message from "../Message/Message";
+import AddPost from '../AddpPost/AddPost';
+import {addPostTextActionCreator,addPostImgActionCreator,addPostActionCreator} from "../../reduses/post-reducer"
 
 const mapStateToProps = (state) => {
   return {
@@ -12,20 +12,20 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    openDiaolog:(body) => {
-      dispatch(openDiaologActionCreator(body))
-    },
     addText:(body) => {
-      dispatch(addTextActionCreator(body))
+      dispatch(addPostTextActionCreator(body))
     },
-    addMessage:(body) => {
-      dispatch(addMessageActionCreator(body))
+    addImg:(body) => {
+      dispatch(addPostImgActionCreator(body))
+    },
+    addPost:(body) => {
+      dispatch(addPostActionCreator(body))
     }
   }
 };
 
-const MessageContainer = connect(mapStateToProps,mapDispatchToProps)(Message)
-export default MessageContainer;
+const postContainer = connect(mapStateToProps,mapDispatchToProps)(AddPost)
+export default postContainer;
 // export default (props) => {
 //   debugger;
 //     return(

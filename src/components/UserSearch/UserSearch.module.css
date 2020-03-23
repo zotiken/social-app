@@ -1,0 +1,22 @@
+.main {
+  color: rgb(36, 29, 18);
+  /* background-color: black; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-area: main;
+  /* height: 80vh; */
+}
+.main_container {
+  height: 100%;
+  width: 100%;
+  /* background-color: aliceblue; */
+}
+.main_container .main_background {
+}
+/* .main img{
+  width: 100%;
+} */
+.main .avatar{
+  width: 100px;
+}
