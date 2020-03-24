@@ -3,10 +3,19 @@ const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
 const SELECT_PAGE = "SELECT_PAGE";
 
-export const followAC = prop => ({ type: FOLLOW, param: prop });
-export const unfollowAC = prop => ({ type: UNFOLLOW, param: prop });
-export const setUsersAC = prop => ({ type: SET_USERS, param: prop });
-export const selectPageAC = prop => ({ type: SELECT_PAGE, param: prop });
+// было
+
+// export const followAC = prop => ({ type: FOLLOW, param: prop });
+// export const unfollowAC = prop => ({ type: UNFOLLOW, param: prop });
+// export const setUsersAC = prop => ({ type: SET_USERS, param: prop });
+// export const selectPageAC = prop => ({ type: SELECT_PAGE, param: prop });
+
+// стало
+
+export const follow = prop => ({ type: FOLLOW, param: prop });
+export const unfollow = prop => ({ type: UNFOLLOW, param: prop });
+export const setUsers = prop => ({ type: SET_USERS, param: prop });
+export const selectPage = prop => ({ type: SELECT_PAGE, param: prop });
 
 // user
 // {id:111111,firstName:"Dima",LastName:"Гоги",age:"22",datacreate:"01.04.2018",frends:["2335543","2345522","2345544"]}
