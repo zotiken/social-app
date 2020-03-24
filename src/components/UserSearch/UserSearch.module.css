@@ -20,3 +20,48 @@
 .main .avatar{
   width: 100px;
 }
+
+.paginatinList{
+  display: flex;
+  margin: 0;padding: 0;
+}
+.paginatinList li{
+  list-style: none;
+  text-decoration: none;
+  padding: 5px;
+}
+.paginatinList li a{
+  text-decoration: none;
+}
+.selectPage{
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.users_List{
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0;
+}
+.users_List li{
+  box-sizing: border-box;
+  border: 1px solid black;
+  margin: 10px 0;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+ 
+}
+.users_List li img{
+  width: 100px;
+  height: 100px;
+}
