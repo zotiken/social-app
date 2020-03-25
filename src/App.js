@@ -2,14 +2,14 @@ import React  from "react";
 
 import Header from "./components/Header/Header";
 import Aside from "./components/Aside/Aside";
-import Main from "./components/Main/Main";
+import Profile from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import MessageContainer from "./components/Message-container/MessageContainer";
 import SearhUserContainer from "./components/SearchUserContainer/SearchUserContainer"
-import store from './Redux/storeRedux'
+import ProfileContainer from "./components/ProfileContainer/ProfileContainer"
 
 import "./App.css";
 // import {posts,dialogs} from './state/state'
@@ -20,20 +20,15 @@ function App(props) {
       <div className="App">
         <Header />
         <Router>
-          <Aside />
+          <Aside { ...props} />
           <Switch>
-            <Route path="/home">
-              <Main posts={props.store.getState().profilePage.posts} state={props.store.getState()} store={props.store} />
+            <Route path="/profile/:userid?">
+              <ProfileContainer/>
+              {/* <Profile posts={props.store.getState().profilePage.posts} state={props.store.getState()} store={props.store} /> */}
             </Route>
             <Route path="/message">
               <MessageContainer
                 state={props.store.getState()}
-                // onOpenDialog={props.store.despatch.bind(props.store)}
-                // onAddText={props.store.despatch.bind(props.store)}
-                // onAddMessage={props.store.despatch.bind(props.store)}
-                onOpenDialog={props.store.dispatch}
-                onAddText={props.store.dispatch}
-                onAddMessage={props.store.dispatch}
               ></MessageContainer>
             </Route>
 

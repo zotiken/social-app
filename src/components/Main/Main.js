@@ -1,8 +1,16 @@
 import React from 'react'
 import classes from "../Main/Main.module.css";
 import PostBox from "../post-box/post-box"
+import userLogo from '../../assets/img/user-default.png'
+
 export default (props) => {
-  // debugger;
+  // console.log(props.state.profile);
+  let src;
+  if (props.state.profile) {
+    src =props.state.profile.photos.large
+  }else{
+    src = userLogo;
+  }
     return(
         <main className={classes.main}>
         <div className={classes.main_container}>
@@ -13,14 +21,12 @@ export default (props) => {
           /> */}
           <div>
             <div className="user_info">
-            <img className="avatar" src="https://s.acdn.ur-img.com/media/players/225/225385/22538574.jpg?1563858353" width="100" alt="avatar"  />
+            <img className="avatar" src={src} width="100" alt="avatar"  />
             <div className="user_data">
-            <p>name: <span>Nik</span></p>
+        <p>name: <span>{props.state.profile?props.state.profile.fullName:null}</span></p>
             <p>age</p>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione
-              iure, culpa provident aperiam saepe illo, cum officia, quod est
-              
+            {props.state.profile?props.state.profile.aboutMe:null}
             </p>
             </div>
             </div>

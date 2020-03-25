@@ -1,5 +1,4 @@
 import React,{Component} from "react";
-
 import {connect} from "react-redux"
 import * as axios from  "axios"
 import SearchUser from "../UserSearch/UserSearch"
@@ -64,6 +63,7 @@ const mapStateToProps = (state) => {
 // }
 // {follow:follow,unfollow:unfollow,setUsers:setUsers,selectPage:selectPage}
 // {follow,unfollow,setUsers,selectPage}
+
 
 const SearchUserContainer = connect(mapStateToProps,{follow,unfollow,setUsers,selectPage,isLoading}
   )(SearchUserWrap);

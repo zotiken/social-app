@@ -3,7 +3,7 @@ import React from 'react';
 // import MessageItem from '../Message_item/Message_item';
 import {connect} from "react-redux";
 import AddPost from '../AddpPost/AddPost';
-import {addPostTextActionCreator,addPostImgActionCreator,addPostActionCreator} from "../../reduses/post-reducer"
+import {addPostText,addPostImg,addPost} from "../../reduses/post-reducer"
 
 const mapStateToProps = (state) => {
   return {
@@ -13,13 +13,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addText:(body) => {
-      dispatch(addPostTextActionCreator(body))
+      dispatch(addPostText(body))
     },
     addImg:(body) => {
-      dispatch(addPostImgActionCreator(body))
+      dispatch(addPostImg(body))
     },
     addPost:(body) => {
-      dispatch(addPostActionCreator(body))
+      dispatch(addPost(body))
     }
   }
 };

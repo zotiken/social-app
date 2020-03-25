@@ -1,14 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import classes from "../Aside/Aside.module.css";
 
 
-export default () => {
+export default (props) => {
   return (
     <aside className={classes.aside}>
       <ul>
         <li>
-          <Link to="/home">home</Link>
+          <Link to="/profile">profile</Link>
         </li>
         <li>
           <Link to="/settings">settings</Link>
