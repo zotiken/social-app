@@ -18,8 +18,8 @@ function App(props) {
   // debugger;
   return (
       <div className="App">
+                <Router>
         <Header />
-        <Router>
           <Aside { ...props} />
           <Switch>
             <Route path="/profile/:userid?">

@@ -1,5 +1,7 @@
 import React from "react";
 import logo from "../../pngwave.png";
+import UserNavigationContainer from '../UserNavigationContainer/UserNavigationContainer'
+
 import classes from "../Header/Header.module.css";
 
 const Header = props => {
@@ -16,11 +18,7 @@ const Header = props => {
           <li>signin</li>
           <li>news</li>
         </ul>
-        <ul>
-          <li>signin</li>
-          <li>name</li>
-          <li>level</li>
-        </ul>
+        <UserNavigationContainer/>
       </nav>
     </header>
   );
