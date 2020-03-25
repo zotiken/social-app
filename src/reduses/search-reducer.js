@@ -2,6 +2,8 @@ const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
 const SELECT_PAGE = "SELECT_PAGE";
+const CHANGE_LOADING_STATUS = "CHANGE_LOADING_STATUS";
+
 
 // было
 
@@ -16,6 +18,8 @@ export const follow = prop => ({ type: FOLLOW, param: prop });
 export const unfollow = prop => ({ type: UNFOLLOW, param: prop });
 export const setUsers = prop => ({ type: SET_USERS, param: prop });
 export const selectPage = prop => ({ type: SELECT_PAGE, param: prop });
+export const isLoading = prop => ({ type: CHANGE_LOADING_STATUS, param: prop });
+
 
 // user
 // {id:111111,firstName:"Dima",LastName:"Гоги",age:"22",datacreate:"01.04.2018",frends:["2335543","2345522","2345544"]}
@@ -24,7 +28,8 @@ const initState = () => ({
   users: [],
   currentPage:1,
   countPage:10,
-  totalPage:0
+  totalPage:0,
+  loading:false
 });
 const SearchUserReducer = (state = initState(), action) => {
   switch (action.type) {
@@ -51,7 +56,12 @@ totalPage:action.param.total
   ...state,
   currentPage:action.param
         });
-  
+        case CHANGE_LOADING_STATUS:
+        return ({
+  ...state,
+  loading:action.param
+        });
+
 
     default:
       return state;
