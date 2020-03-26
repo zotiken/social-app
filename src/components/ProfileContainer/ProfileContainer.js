@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import {connect} from 'react-redux'
-import * as  axios  from 'axios'
 import {profileApi} from '../../Api/Api'
 import Profile from '../Main/Main'
 import {addPost,addPostImg,addPostText,setProfile} from '../../reduses/post-reducer'
