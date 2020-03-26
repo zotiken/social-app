@@ -1,77 +1,38 @@
 import React,{Component} from "react";
 import {connect} from "react-redux"
-import userApi from '../../Api/Api'
+import {userApi} from '../../Api/Api'
 
 import SearchUser from "../UserSearch/UserSearch"
-// import {followAC,unfollowAC,setUsersAC,selectPageAC} from "../../reduses/search-reducer"
 import {follow,unfollow,setUsers,selectPage,isLoading} from "../../reduses/search-reducer"
 
  class SearchUserWrap extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
   componentDidMount() {
     userApi.getUsers()
     .then(data => {
       this.props.setUsers({items:data.data.items,total:data.data.totalCount});
       this.props.isLoading(true)})
-    // axios({
-    //   method: 'get',
-    //   url: "https://social-network.samuraijs.com/api/1.0/users",
-    // }).then(data => {console.log(data); this.props.setUsers({items:data.data.items,total:data.data.totalCount}); this.props.isLoading(true)})
   }
 
-  onselectPage = (i) => {
-this.props.selectPage(i);
-userApi.getCurrentPAge(i)
+  onselectPage = (number) => {
+this.props.selectPage(number);
+userApi.getCurrentPAge(number)
 .then(data => {
   this.props.setUsers({items:data.data.items,total:data.data.totalCount});
  this.props.isLoading(true)})
-// axios({
-//   method: 'get',
-//   url: `https://social-network.samuraijs.com/api/1.0/users?page=${i}`,
-// }).then(data => {console.log(data); this.props.setUsers({items:data.data.items,total:data.data.totalCount}); this.props.isLoading(true)})
   }
 
-  onFollow =(param)=> {
-    userApi.followStatus(param)
-    // axios({
-    //   withCredentials: true,
-    //   method: 'get',
-    //   url: "https://social-network.samuraijs.com/api/1.0/follow/" + param,
-    //   headers:{
-    //    "API-KEY":"eb4884d1-22a9-4753-b224-5ea5fc049f6e"
-    //   }
-    // })
+  onFollow =(userId)=> {
+    userApi.followStatus(userId)
     .then(data => {
       if (!data.data) {
-        userApi.followSuccess(param)
-        // axios({
-        //   withCredentials: true,
-        //   method: 'post',
-        //   url: "https://social-network.samuraijs.com/api/1.0/follow/" + param,
-        //   headers:{
-        //     "API-KEY":"eb4884d1-22a9-4753-b224-5ea5fc049f6e"
-        //    }
-     
-        // })
+        userApi.followSuccess(userId)
         .then(data => {if (data.data) {
-          this.props.follow(param)
+          this.props.follow(userId)
         }})
       } else {
-        userApi.unFollowSuccess(param)
-
-        // axios({
-        //   withCredentials: true,
-        //   method: 'delete',
-        //   url: "https://social-network.samuraijs.com/api/1.0//follow/" + param,
-        //   headers:{
-        //     "API-KEY":"eb4884d1-22a9-4753-b224-5ea5fc049f6e"
-        //    }
-     
-        // })
+        userApi.unFollowSuccess(userId)
         .then(data => {if (data.data) {
-          this.props.unfollow(param)
+          this.props.unfollow(userId)
         }})
 
       }

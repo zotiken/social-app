@@ -8,12 +8,16 @@ const instance = axios.create({
     }
 })
 
- const userApi = {
+ export const userApi = {
  getUsers:() => instance.get(`users`),
  getCurrentPAge:(number) => instance.get(`users?page=`+ number),
  followStatus:(userid) => instance.get("follow/" + userid),
  followSuccess :(userid) => instance.post("follow/" + userid),
  unFollowSuccess :(userid) => instance.delete("follow/" + userid),
-
 }
+export const profileApi = {
+    getProfile:(userid) => instance.get("profile/"+ userid)
+   }
+   
+
 export default userApi;
