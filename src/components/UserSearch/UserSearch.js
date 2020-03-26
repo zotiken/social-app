@@ -19,7 +19,7 @@ return(
             </ul>
           {props.loading? 
           <ul className={classes.users_List}>
-{ props.users.map(user => <li key={user.id}>{user.followed?<button onClick={()=> props.unfollow(user.id)}>follow</button>:<button onClick={()=> props.follow(user.id)}>unfollow</button>} <Link to={`/profile/${user.id}`} ><img width="100" src={user.photos.small?user.photos.small:userDefault}  alt="AVATAR"/> <p>{user.name}</p></Link></li>)}
+{ props.users.map(user => <li key={user.id}>{user.followed?<button onClick={()=> props.onFollow(user.id)}>follow</button>:<button onClick={()=> props.onFollow(user.id)}>unfollow</button>} <Link to={`/profile/${user.id}`} ><img width="100" src={user.photos.small?user.photos.small:userDefault}  alt="AVATAR"/> <p>{user.name}</p></Link></li>)}
           </ul>: <Preload/>}
       </main>
 )
