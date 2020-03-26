@@ -3,7 +3,7 @@ import {connect} from "react-redux"
 import {userApi} from '../../Api/Api'
 
 import SearchUser from "../UserSearch/UserSearch"
-import {follow,unfollow,setUsers,selectPage,isLoading} from "../../reduses/search-reducer"
+import {follow,unfollow,unactive,active,setUsers,selectPage,isLoading} from "../../reduses/search-reducer"
 
  class SearchUserWrap extends Component {
   componentDidMount() {
@@ -22,17 +22,24 @@ userApi.getCurrentPAge(number)
   }
 
   onFollow =(userId)=> {
+    console.log("!");
+    this.props.unactive(userId)
     userApi.followStatus(userId)
     .then(data => {
       if (!data.data) {
         userApi.followSuccess(userId)
         .then(data => {if (data.data) {
+          console.log("!!!");
           this.props.follow(userId)
+          this.props.active(userId)
+
         }})
       } else {
         userApi.unFollowSuccess(userId)
         .then(data => {if (data.data) {
+          console.log("!!");
           this.props.unfollow(userId)
+          this.props.active(userId)
         }})
 
       }
@@ -51,7 +58,9 @@ const mapStateToProps = (state) => {
     currentPage: state.findUsersPage.currentPage,
     countPage: state.findUsersPage.countPage,
     totalPage: state.findUsersPage.totalPage,
-    loading: state.findUsersPage.loading
+    loading: state.findUsersPage.loading,
+    stateButtons: state.findUsersPage.stateButtons
+
   })
 }
 // const mapDispatchToProps = dispatch => {
@@ -82,6 +91,6 @@ const mapStateToProps = (state) => {
 // {follow,unfollow,setUsers,selectPage}
 
 
-const SearchUserContainer = connect(mapStateToProps,{follow,unfollow,setUsers,selectPage,isLoading}
+const SearchUserContainer = connect(mapStateToProps,{follow,unfollow,unactive,active,setUsers,selectPage,isLoading}
   )(SearchUserWrap);
 export default SearchUserContainer;
