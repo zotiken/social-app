@@ -1,3 +1,6 @@
+import userApi from '../Api/Api'
+// import { selectPageThunk } from './search-reducer';
+
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const UNACTIVATE= "UNACTIVATE";
@@ -24,6 +27,48 @@ export const active = prop => ({ type: ACTIVATE, param: prop });
 export const setUsers = prop => ({ type: SET_USERS, param: prop });
 export const selectPage = prop => ({ type: SELECT_PAGE, param: prop });
 export const isLoading = prop => ({ type: CHANGE_LOADING_STATUS, param: prop });
+
+
+// Thunk  идет через Middleware тк функция в action
+
+export const getUsers = () => dispatch => {
+  userApi.getUsers()
+  .then(data => {
+    dispatch(setUsers({items:data.data.items,total:data.data.totalCount}));
+    dispatch(isLoading(true))})
+}
+
+export const selectPageT= (number) => dispatch => {
+  dispatch(selectPage(number));
+userApi.getCurrentPAge(number)
+.then(data => {
+  dispatch(setUsers({items:data.data.items,total:data.data.totalCount}));
+  dispatch(isLoading(true))})
+}
+export const onFollow =(userId) => dispatch => {
+  dispatch(unactive(userId))
+  userApi.followStatus(userId)
+  .then(data => {
+    if (!data.data) {
+      userApi.followSuccess(userId)
+      .then(data => {if (data.data) {
+        dispatch(follow(userId))
+        dispatch(active(userId))
+
+      }})
+    } else {
+      userApi.unFollowSuccess(userId)
+      .then(data => {if (data.data) {
+        dispatch(unfollow(userId))
+        dispatch(active(userId))
+      }})
+
+    }
+  })
+
+
+}
+
 // user
 // {id:111111,firstName:"Dima",LastName:"Гоги",age:"22",datacreate:"01.04.2018",frends:["2335543","2345522","2345544"]}
 
@@ -82,4 +127,5 @@ totalPage:action.param.total
       return state;
   }
 };
+
 export default SearchUserReducer;

@@ -1,50 +1,19 @@
 import React,{Component} from "react";
 import {connect} from "react-redux"
-import {userApi} from '../../Api/Api'
 
 import SearchUser from "../UserSearch/UserSearch"
-import {follow,unfollow,unactive,active,setUsers,selectPage,isLoading} from "../../reduses/search-reducer"
+import {getUsers,selectPageT,onFollow} from "../../reduses/search-reducer"
 
  class SearchUserWrap extends Component {
   componentDidMount() {
-    userApi.getUsers()
-    .then(data => {
-      this.props.setUsers({items:data.data.items,total:data.data.totalCount});
-      this.props.isLoading(true)})
+    this.props.getUsers() 
   }
-
   onselectPage = (number) => {
-this.props.selectPage(number);
-userApi.getCurrentPAge(number)
-.then(data => {
-  this.props.setUsers({items:data.data.items,total:data.data.totalCount});
- this.props.isLoading(true)})
+    this.props.selectPageT(number)
   }
 
   onFollow =(userId)=> {
-    console.log("!");
-    this.props.unactive(userId)
-    userApi.followStatus(userId)
-    .then(data => {
-      if (!data.data) {
-        userApi.followSuccess(userId)
-        .then(data => {if (data.data) {
-          console.log("!!!");
-          this.props.follow(userId)
-          this.props.active(userId)
-
-        }})
-      } else {
-        userApi.unFollowSuccess(userId)
-        .then(data => {if (data.data) {
-          console.log("!!");
-          this.props.unfollow(userId)
-          this.props.active(userId)
-        }})
-
-      }
-    })
-
+    this.props.onFollow(userId)
   }
 render(){
 return(<SearchUser { ...this.props} onselectPage={this.onselectPage} onFollow={this.onFollow} />)
@@ -91,6 +60,6 @@ const mapStateToProps = (state) => {
 // {follow,unfollow,setUsers,selectPage}
 
 
-const SearchUserContainer = connect(mapStateToProps,{follow,unfollow,unactive,active,setUsers,selectPage,isLoading}
+const SearchUserContainer = connect(mapStateToProps,{getUsers,selectPageT,onFollow}
   )(SearchUserWrap);
 export default SearchUserContainer;
