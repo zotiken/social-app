@@ -1,8 +1,10 @@
 // import store from '../state/state'
+import {authApi} from "../Api/Api"
 const initState = () => {
   return ({
     id:null,
-    login:null
+    login:null,
+    status:1
   })
 };
 // export  const addPostActionCreator = (prop) => {return({type:ADD_POST,param:prop})};
@@ -10,6 +12,13 @@ const initState = () => {
 // export  const addPostTextActionCreator = (prop) => {return ({type:ADD_POST_TEXT,param:prop})}
 
 export const setStatusAuth = prop => ({ type: SET_AUTH_STATUS, param: prop });
+
+
+export const statusAuth = (prop) => dispatch => {
+  authApi.getAuthStatus().then(
+    reponse => dispatch(setStatusAuth({login:reponse.data.data.login, status:reponse.data.resultCode}))
+  )
+};
 
 const SET_AUTH_STATUS = "SET_AUTH_STATUS";
 

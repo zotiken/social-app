@@ -1,7 +1,7 @@
 import React from 'react';
 // import classes from "../Message/Message.module.css";
 // import MessageItem from '../Message_item/Message_item';
-import {openDiaologActionCreator,addTextActionCreator,addMessageActionCreator} from '../../reduses/dialods-reducer'
+import {onOpenDialog,onAddText,onAddMessage} from '../../reduses/dialods-reducer'
 import {connect} from "react-redux";
 import Message from "../Message/Message";
 
@@ -10,21 +10,21 @@ const mapStateToProps = (state) => {
     state: state
   }
 };
-const mapDispatchToProps = (dispatch) => {
-  return {
-    openDiaolog:(body) => {
-      dispatch(openDiaologActionCreator(body))
-    },
-    addText:(body) => {
-      dispatch(addTextActionCreator(body))
-    },
-    addMessage:(body) => {
-      dispatch(addMessageActionCreator(body))
-    }
-  }
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     onOpenDialog:(body) => {
+//       dispatch(openDiaologActionCreator(body))
+//     },
+//     onAddText:(body) => {
+//       dispatch(addTextActionCreator(body))
+//     },
+//     onAddMessage:(body) => {
+//       dispatch(addMessageActionCreator(body))
+//     }
+//   }
+// };
 
-const MessageContainer = connect(mapStateToProps,mapDispatchToProps)(Message)
+const MessageContainer = connect(mapStateToProps,{onOpenDialog,onAddText,onAddMessage})(Message)
 export default MessageContainer;
 // export default (props) => {
 //   debugger;

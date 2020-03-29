@@ -2,7 +2,6 @@ import React  from "react";
 
 import Header from "./components/Header/Header";
 import Aside from "./components/Aside/Aside";
-import Profile from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import News from "./components/News/News";
@@ -41,6 +40,10 @@ function App(props) {
             <Route path="/search_user">
               <SearhUserContainer/>
             </Route>
+            <Route path="/auth">
+              <div>!!!!!!</div>
+            </Route>
+
           </Switch>
         </Router>
         <Footer />
