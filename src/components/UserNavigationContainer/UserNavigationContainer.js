@@ -9,10 +9,8 @@ class UserNavigationWrap extends Component {
       }
 
   render() {
-    debugger
     console.log(this.props);
     return (
-      // <Profile {...this.props}/>
         <ul>
           <li>
             {this.props.state.status === 0?this.props.state.login:<Link to="/auth">signin</Link>}

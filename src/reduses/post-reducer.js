@@ -72,11 +72,13 @@ export const addPostText = prop => {
 export const setProfile = prop => {
   return { type: SET_PROFILE, param: prop };
 };
+export const setDescription = prop => ({ type: SET_DESCRIPTION, param: prop });
 
 const ADD_POST_TEXT = "ADD_POST_TEXT";
 const ADD_POST_IMG = "ADD_POST_IMG";
 const ADD_POST = "ADD_POST";
 const SET_PROFILE = "SET_PROFILE";
+const SET_DESCRIPTION = "SET_DESCRIPTION";
 
 const postReducer = (state = initState(), action) => {
   // debugger;
@@ -121,6 +123,12 @@ const postReducer = (state = initState(), action) => {
       //   ...state,
       //   posts:[...state.posts,...addPost]})
       return newState;
+      case "SET_DESCRIPTION":
+        return {
+          ...state,
+          profile:{...state.profile,aboutMe:action.param.target.value},
+        };
+  
     default:
       //   console.log(action + " not found");
       return state;

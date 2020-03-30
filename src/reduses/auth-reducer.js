@@ -7,9 +7,6 @@ const initState = () => {
     status:1
   })
 };
-// export  const addPostActionCreator = (prop) => {return({type:ADD_POST,param:prop})};
-// export  const addPostImgActionCreator = (prop) => ({type:ADD_POST_IMG,param:prop})
-// export  const addPostTextActionCreator = (prop) => {return ({type:ADD_POST_TEXT,param:prop})}
 
 export const setStatusAuth = prop => ({ type: SET_AUTH_STATUS, param: prop });
 

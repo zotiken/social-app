@@ -3,8 +3,7 @@ import classes from "../Message/Message.module.css";
 import {Redirect} from "react-router-dom"
 import MessageItem from "../Message_item/Message_item"
 export default props => {
-  debugger
-  if (props.state.auth.status === 1) { return <Redirect to="/auth" />}
+  // if (props.state.auth.status === 1) { return <Redirect to="/auth" />}
   return (
     <main className="main">
       <div className="main_container dialogs">
