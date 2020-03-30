@@ -5,26 +5,22 @@ import userLogo from '../../assets/img/user-default.png'
 
 export default (props) => {
   let [edit,setEdit] = useState(false)
-  let src;
-  if (props.state.profile) {
-    src =props.state.profile.photos.large
-  }else{
-    src = userLogo;
-  }
+
+  let src =props.state.profile?
+  props.state.profile.photos.large
+  :
+  userLogo;
+
     return(
         <main className={classes.main}>
         <div className={classes.main_container}>
-          {/* <img className="main_background"
-            src="https://assets3.thrillist.com/v1/image/2794471/size/sk-2017_04_article_text_width_desktop.jpg"
-            height="200"
-            alt="banner"
-          /> */}
           <div>
             <div className="user_info">
             <img className="avatar" src={src} width="100" alt="avatar"  />
             <div className="user_data">
         <p>name: <span>{props.state.profile?props.state.profile.fullName:null}</span></p>
             <p>age</p>
+            
             {!edit?
             <p onDoubleClick={() => setEdit(edit =true) }>
             {props.state.profile?props.state.profile.aboutMe:null}
@@ -34,8 +30,6 @@ export default (props) => {
               props.setDescription(event)
             }} onBlur={() => setEdit(edit =false) }/>
             }
-            
-
             </div>
             </div>
           </div>

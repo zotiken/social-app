@@ -1,4 +1,5 @@
 // import store from '../state/state'
+import {profileApi} from "../Api/Api"
 const initState = () => {
   return {
     profile: null,
@@ -74,6 +75,19 @@ export const setProfile = prop => {
 };
 export const setDescription = prop => ({ type: SET_DESCRIPTION, param: prop });
 
+//                          thunk
+
+export const getProfile = (param) => dispatch => {
+  let userid = param
+  if(!userid) {
+    userid = 2
+  }
+  profileApi.getProfile(userid)
+  .then(reponse => dispatch(setProfile(reponse.data)))
+
+};
+
+
 const ADD_POST_TEXT = "ADD_POST_TEXT";
 const ADD_POST_IMG = "ADD_POST_IMG";
 const ADD_POST = "ADD_POST";
@@ -81,7 +95,6 @@ const SET_PROFILE = "SET_PROFILE";
 const SET_DESCRIPTION = "SET_DESCRIPTION";
 
 const postReducer = (state = initState(), action) => {
-  // debugger;
   let newState;
   switch (action.type) {
     case "SET_PROFILE":

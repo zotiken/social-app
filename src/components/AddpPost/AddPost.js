@@ -1,7 +1,5 @@
 import React from "react";
-import { addTextActionCreator } from "../../reduses/dialods-reducer";
 import PostsList from "../PostsList/PostsList";
-// import classes from "../AddpPost/AddPost.module";
 
 export default props => {
   return (
@@ -11,13 +9,13 @@ export default props => {
           type="file"
           name=""
           id=""
-          onChange={event => props.addImg(event)}
+          onChange={event => props.addPostImg(event)}
         />
         <textarea
           name="add-Post"
           id="add-Post"
           value={props.state.profilePage.addPostText}
-          onChange={event => props.addText(event)}
+          onChange={event => props.addPostText(event)}
         >
           )
         </textarea>
