@@ -3,7 +3,7 @@ import  dialogReducer from '../reduses/dialods-reducer'
 import postReducer from '../reduses/post-reducer'
 import SearchUserReducer from '../reduses/search-reducer'
 import Thunk from 'redux-thunk'
-
+import { reducer as formReducer } from 'redux-form'
 import authReducer from '../reduses/auth-reducer'
 
 let rootReducer = combineReducers({
@@ -11,6 +11,7 @@ let rootReducer = combineReducers({
     profilePage:postReducer,
     findUsersPage:SearchUserReducer,
     auth:authReducer,
+    form:formReducer
 })
 
 

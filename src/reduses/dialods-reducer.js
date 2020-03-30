@@ -159,7 +159,6 @@ const dialogReducer = (state = initState(), action) => {
   let newState;
   switch (action.type) {
     case OPEN_DIALOG:
-      debugger
       newState = {
         ...state
       }
@@ -173,17 +172,16 @@ const dialogReducer = (state = initState(), action) => {
       let List = document.querySelectorAll("#dialogs_list li a");
       List.forEach(dialog => dialog.classList.remove("active"));
       action.param.target.classList.add("active");
-      // store._callSubscriber(store.getState);
       return newState;
     case ADD_TEXT:
       newState = {
         ...state
       }
       newState.addMessage = action.param.target.value;
-      // store._callSubscriber(store.getState);
       return newState;
 
     case ADD_MSG:
+      console.log(action.param) 
       newState = {
         ...state
       }
@@ -200,18 +198,15 @@ const dialogReducer = (state = initState(), action) => {
         if (dialog.id === state.selectDialogID) {
           let addMessage = [{
             messageType: "question",
-            text: newState.addMessage
+            text: action.param.addMsg
           }];
           newState.addMessage = "";
           dialog.messages = [...state.dialogs[i].messages, ...addMessage]
         }
-        //   // store._callSubscriber(store.getState);
       });
       return newState;
     default:
-      // console.log(action + " not found");
       return state;
-      // break;
   }
 };
 export default dialogReducer;

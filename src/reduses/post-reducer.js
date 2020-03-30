@@ -87,6 +87,15 @@ export const getProfile = (param) => dispatch => {
 
 };
 
+export const editStatus = (status) => dispatch => {
+  profileApi.editStatus(status).then(response =>
+    {console.log(response);
+      if (response.data.resultCode === 0) {
+      dispatch(setDescription(status))
+    }}
+  )
+};
+
 
 const ADD_POST_TEXT = "ADD_POST_TEXT";
 const ADD_POST_IMG = "ADD_POST_IMG";
@@ -120,26 +129,27 @@ const postReducer = (state = initState(), action) => {
         addPostImg: window.URL.createObjectURL(file)
       };
     case "ADD_POST":
+      console.log(action.param.add)
+
       let addPost = [
         {
           id: "1111111",
-          img: state.addPostImg,
+          img: window.URL.createObjectURL(action.param.picture),
           create_date: new Date(),
-          info: state.addPostText,
+          info: action.param.add,
           id_user: "1",
           like: "0"
         }
       ];
-      newState = { ...state };
-      newState.posts = [...state.posts, ...addPost];
-      // return({
-      //   ...state,
-      //   posts:[...state.posts,...addPost]})
-      return newState;
+      return({
+        ...state,
+        posts:[...addPost,...state.posts]
+      })
       case "SET_DESCRIPTION":
+        console.log(action)
         return {
           ...state,
-          profile:{...state.profile,aboutMe:action.param.target.value},
+          profile:{...state.profile,aboutMe:action.param},
         };
   
     default:

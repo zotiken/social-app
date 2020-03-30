@@ -17,6 +17,12 @@ export const statusAuth = (prop) => dispatch => {
   )
 };
 
+export const auth = (email,pass) => dispatch =>{
+  authApi.auth(email,pass).then(
+    reponse => console.log(reponse)
+  )
+} ;
+
 const SET_AUTH_STATUS = "SET_AUTH_STATUS";
 
 const authReducer = (state = initState(), action) => {

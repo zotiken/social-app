@@ -16,12 +16,15 @@ export const userApi = {
   unFollowSuccess: (userid) => instance.delete("follow/" + userid),
 }
 export const profileApi = {
-  getProfile: (userid) => instance.get("profile/" + userid)
+  getProfile: (userid) => instance.get("profile/" + userid),
+  editStatus: (status) => instance.put("profile/status",{status})
+
+  
 }
 
 export const authApi = {
-  getAuthStatus: () => instance.get("auth/me")
-  
+  getAuthStatus: () => instance.get("auth/me"),
+  auth:(email,password) => instance.post("/auth/login",{email,password})
 }
 
 

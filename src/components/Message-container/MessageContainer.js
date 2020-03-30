@@ -12,27 +12,6 @@ const mapStateToProps = (state) => {
     state: state
   }
 };
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     onOpenDialog:(body) => {
-//       dispatch(openDiaologActionCreator(body))
-//     },
-//     onAddText:(body) => {
-//       dispatch(addTextActionCreator(body))
-//     },
-//     onAddMessage:(body) => {
-//       dispatch(addMessageActionCreator(body))
-//     }
-//   }
-// };
-
-// const MessageContainer = compose(
-//   connect(mapStateToProps,{onOpenDialog,onAddText,onAddMessage}),
-//   withAuthRedirect
-// )(Message)
-// export default MessageContainer;
-
-//                   =>
 
 export default compose(
   connect(mapStateToProps,{onOpenDialog,onAddText,onAddMessage}),

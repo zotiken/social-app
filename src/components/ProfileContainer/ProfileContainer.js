@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import {connect} from 'react-redux'
 import Profile from '../Main/Main'
-import {getProfile} from '../../reduses/post-reducer'
+import {getProfile,setDescription,editStatus} from '../../reduses/post-reducer'
 
   
   export class ProfileWrap extends Component {
@@ -20,6 +20,6 @@ import {getProfile} from '../../reduses/post-reducer'
 state: state.profilePage
   })
   // withRouter(ProfileWrap)    -   дает информацию в state из строки поиска
-  export default connect(mapStateToProps,{getProfile})(withRouter(ProfileWrap))
+  export default connect(mapStateToProps,{getProfile,setDescription,editStatus})(withRouter(ProfileWrap))
 
 

@@ -1,9 +1,27 @@
 import React from "react";
 import classes from "../Message/Message.module.css";
-import {Redirect} from "react-router-dom"
 import MessageItem from "../Message_item/Message_item"
+import {reduxForm,Field} from "redux-form"
+
+function addMessageForm (props){
+  return(
+    <form onSubmit={props.handleSubmit} className={classes.dialogs_add_Post}>
+    <Field
+      name="addMsg"
+      id="addMsg"
+      component={"textarea"}
+    />
+    <button >
+      View all
+    </button>
+  </form>
+
+  )
+}
+
+const ReduxaddMessageForm = reduxForm({form:"add_msg"})(addMessageForm)
+
 export default props => {
-  // if (props.state.auth.status === 1) { return <Redirect to="/auth" />}
   return (
     <main className="main">
       <div className="main_container dialogs">
@@ -36,20 +54,8 @@ export default props => {
                 ))}
               </ul>
             </div>
-            <div className={classes.dialogs_add_Post}>
-              <textarea
-                name="add_Posts"
-                id="addPosts"
-                cols="30"
-                rows="10"
-                value={props.state.dialogsPage.addMessage}
-                onChange={event => props.onAddText(event)}
-              ></textarea>
-              <button onClick={event => props.onAddMessage(event)}>
-                View all
-              </button>
-            </div>
-          </div>
+<ReduxaddMessageForm onSubmit={(formData) => props.onAddMessage(formData)}/>   
+       </div>
         </div>
       </div>
     </main>

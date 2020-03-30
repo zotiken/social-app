@@ -9,6 +9,8 @@ import Settings from "./components/Settings/Settings";
 import MessageContainer from "./components/Message-container/MessageContainer";
 import SearhUserContainer from "./components/SearchUserContainer/SearchUserContainer"
 import ProfileContainer from "./components/ProfileContainer/ProfileContainer"
+import AuthorizationPage from "./components/AuthorizationPage/AuthorizationPage"
+
 
 import "./App.css";
 // import {posts,dialogs} from './state/state'
@@ -41,7 +43,7 @@ function App(props) {
               <SearhUserContainer/>
             </Route>
             <Route path="/auth">
-              <div>!!!!!!</div>
+              <AuthorizationPage/>
             </Route>
 
           </Switch>
