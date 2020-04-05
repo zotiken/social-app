@@ -4,6 +4,23 @@ import {reduxForm,Field} from "redux-form"
 
 const adaptFileEventToValue = delegate => e => delegate(e.target.files[0]);  
 
+const required = value => (value || typeof value === 'number' ? undefined : 'Required')
+const number = value =>
+  value && isNaN(Number(value)) ? 'Must be a number' : undefined
+
+function Textarea ({input,meta,...props}) {
+  console.log(props);
+  const{error,touched,warning} = meta
+  return(
+    <div>
+    <textarea {...input} {...meta} {...props}></textarea>
+{touched &&
+        ((error && <span>{error}</span>) ||
+          (warning && <span>{warning}</span>))}    </div>
+  )
+  
+}
+
 const FileInput = ({ 
   input: { value: omitValue, onChange, onBlur, ...inputProps }, 
   meta: omitMeta, 
@@ -25,18 +42,13 @@ const FileInput = ({
     <Field
       type="file"
       name="picture"
-      // value={null}
-      // id="file"
       component={FileInput}
-      // onChange={event => props.addPostImg(event)}
     />
     <Field
       name="add"
       // id="add-Post"
-      component={"textarea"}
-
-      // value={props.state.profilePage.addPostText}
-      // onChange={event => props.addPostText(event)}
+      component={Textarea}
+      validate={[required,number]}
     />
     <button
     //  onClick={event => props.addPost(event)}

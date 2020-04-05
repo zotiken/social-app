@@ -18,14 +18,19 @@ main h2 { text-transform: uppercase;
   flex-direction: column;
 }
 .input {
-  width: 30%;
-  margin: 20px;
-  padding: 10px;
+  box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
 }
 
 .button {
   width: 30%;
   margin: 20px;
   padding: 10px;
+}
+.input_wrapper{
+  box-sizing: border-box;
+  width: 30%;
+  margin: 20px;
 }
 

@@ -7,11 +7,28 @@ import userLogo from '../../assets/img/user-default.png'
     super(props)
     this.state = {
       edit:false,
-      // status:this.props.state.profile?this.props.state.profile.aboutMe:null
-      status:"1111111111"
-
+      status:this.props.state.profile?this.props.state.profile.aboutMe:null
     }
   }
+  // componentDidMount() {
+  //   this.props.getStatus(this.props.match.params.userid)
+  //   if (this.props.state.profile) {
+  //     this.setState(state=> state.status = this.props.state.profile.aboutMe)
+  //   }
+  // //   console.log(this.props.match.params.userid);
+  // }
+
+  componentDidUpdate(nextProps,nextState){
+    if (nextProps.state.profile) {
+      console.log(nextProps.state.profile);
+      if (!this.state.status) {
+        this.setState(
+          state => (state.status = nextProps.state.profile.aboutMe)
+        );
+      }
+    }
+}
+
   render() {
     console.log(this.props);
   let src =this.props.state.profile?
@@ -19,7 +36,7 @@ import userLogo from '../../assets/img/user-default.png'
   :
   userLogo;
   
-let description = this.props.state.profile?this.props.state.profile.aboutMe:null
+// let description = this.props.state.profile?this.props.state.profile.aboutMe:null
     return(
         <main className={classes.main}>
         <div className={classes.main_container}>
@@ -32,13 +49,12 @@ let description = this.props.state.profile?this.props.state.profile.aboutMe:null
             
             {!this.state.edit?
             <p onDoubleClick={() => this.setState(state=> state.edit=true) }>
-            {this.state.status}
+            {this.props.state.profile?this.props.state.profile.aboutMe:null}
             </p>
             :
             <input type="text" autoFocus={true} value={this.state.status} onChange={(e)=> {
               let r = e.target.value
               this.setState(state => state.status = r)
-              console.log(this)
             }} onBlur={() => {this.props.editStatus(this.state.status);this.setState(state => state.edit=false)} }/>
           // }} onBlur={(event) => {this.setState(state => state.edit=false)} }/>
 

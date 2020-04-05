@@ -26,7 +26,11 @@
     text-transform: uppercase;
     list-style: none;
     display: flex;
+    align-items: center;
   }
+  .nav ul li a {
+  margin: 0 10px;  }
+
   .nav ul li:hover {
       text-shadow: 1px 1px 10px #000;
   }

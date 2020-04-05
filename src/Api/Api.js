@@ -17,14 +17,14 @@ export const userApi = {
 }
 export const profileApi = {
   getProfile: (userid) => instance.get("profile/" + userid),
-  editStatus: (status) => instance.put("profile/status",{status})
-
-  
+  editStatus: (status) => instance.put("profile/status",{status}),
+  getStatus: (userId) => instance.get("profile/status/"+userId)
 }
 
 export const authApi = {
   getAuthStatus: () => instance.get("auth/me"),
-  auth:(email,password) => instance.post("/auth/login",{email,password})
+  auth:(email,password) => instance.post("/auth/login",{email,password}),
+  logOut:() => instance.delete("/auth/login")
 }
 
 

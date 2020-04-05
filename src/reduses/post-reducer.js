@@ -1,5 +1,14 @@
 // import store from '../state/state'
-import {profileApi} from "../Api/Api"
+import { profileApi } from "../Api/Api";
+
+// const GET_STATUS = "GET_STATUS";
+const ADD_POST_TEXT = "ADD_POST_TEXT";
+const ADD_POST_IMG = "ADD_POST_IMG";
+const ADD_POST = "ADD_POST";
+const SET_PROFILE = "SET_PROFILE";
+const SET_DESCRIPTION = "SET_DESCRIPTION";
+const DELETE_PROFILE = "DELETE_PROFILE";
+
 const initState = () => {
   return {
     profile: null,
@@ -63,6 +72,8 @@ const initState = () => {
 // export  const addPostImgActionCreator = (prop) => ({type:ADD_POST_IMG,param:prop})
 // export  const addPostTextActionCreator = (prop) => {return ({type:ADD_POST_TEXT,param:prop})}
 
+export const deleteProfile = prop => ({ type: DELETE_PROFILE, param: prop });
+
 export const addPost = prop => {
   return { type: ADD_POST, param: prop };
 };
@@ -75,51 +86,53 @@ export const setProfile = prop => {
 };
 export const setDescription = prop => ({ type: SET_DESCRIPTION, param: prop });
 
+export const getStatus = userId => () => dispatch => {
+  let userid = userId;
+  if (!userid) {
+    userid = 2;
+  }
+  profileApi.getStatus(userId).then(dispatch(setDescription(userId)));
+};
+
+export const Promise2 = new Promise((resolve, reject) => {
+  resolve("hello");
+});
 //                          thunk
 
-export const getProfile = (param) => dispatch => {
-  let userid = param
-  if(!userid) {
-    userid = 2
+export const getProfile = (param, i) => dispatch => {
+  console.log("99999");
+  let userid = param;
+  if (!userid) {
+    userid = i;
   }
-  profileApi.getProfile(userid)
-  .then(reponse => dispatch(setProfile(reponse.data)))
-
+   return profileApi.getProfile(userid).then(reponse => {
+    dispatch(setProfile(reponse.data));
+    // console.log("6666");
+    // return Promise2;
+  });
 };
 
-export const editStatus = (status) => dispatch => {
-  profileApi.editStatus(status).then(response =>
-    {console.log(response);
-      if (response.data.resultCode === 0) {
-      dispatch(setDescription(status))
-    }}
-  )
+export const editStatus = status => dispatch => {
+  profileApi.editStatus(status).then(response => {
+    console.log(response);
+    if (response.data.resultCode === 0) {
+      dispatch(setDescription(status));
+    }
+  });
 };
-
-
-const ADD_POST_TEXT = "ADD_POST_TEXT";
-const ADD_POST_IMG = "ADD_POST_IMG";
-const ADD_POST = "ADD_POST";
-const SET_PROFILE = "SET_PROFILE";
-const SET_DESCRIPTION = "SET_DESCRIPTION";
 
 const postReducer = (state = initState(), action) => {
   let newState;
   switch (action.type) {
+    case "GET_STATUS":
+      return { ...state, profile: action.param };
+
     case "SET_PROFILE":
       return { ...state, profile: action.param };
     case "ADD_POST_TEXT":
-      // return ({
-      //   ...state,
-      //   addPostText:action.param.target.value
-      // })
       newState = { ...state };
-      // newState.addMessage = action.param.event.target.value;
-      // // store._callSubscriber(store.getState);
       newState.addPostText = action.param.target.value;
-
       return newState;
-
     case "ADD_POST_IMG":
       console.log(action.param.target.files[0]);
       let file = action.param.target.files[0];
@@ -129,7 +142,7 @@ const postReducer = (state = initState(), action) => {
         addPostImg: window.URL.createObjectURL(file)
       };
     case "ADD_POST":
-      console.log(action.param.add)
+      console.log(action.param.add);
 
       let addPost = [
         {
@@ -141,17 +154,22 @@ const postReducer = (state = initState(), action) => {
           like: "0"
         }
       ];
-      return({
+      return {
         ...state,
-        posts:[...addPost,...state.posts]
-      })
-      case "SET_DESCRIPTION":
-        console.log(action)
-        return {
-          ...state,
-          profile:{...state.profile,aboutMe:action.param},
-        };
-  
+        posts: [...addPost, ...state.posts]
+      };
+    case "SET_DESCRIPTION":
+      console.log(action);
+      return {
+        ...state,
+        profile: { ...state.profile, aboutMe: action.param }
+      };
+    case "DELETE_PROFILE":
+      console.log(action);
+      return {
+        ...state,
+        profile: null
+      };
     default:
       //   console.log(action + " not found");
       return state;
